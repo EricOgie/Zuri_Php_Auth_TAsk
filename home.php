@@ -13,7 +13,7 @@
 
     <div class="jumbotron">
         <h1 class="display-4">Welcome!</h1>
-        <p class="lead">This is Eric's submission of the PHP Authenticaton Task.</p>
+        <p class="lead">This is Eric's submission of Zuri PHP Authenticaton Task.</p>
         <hr class="my-4">
         <p>You are signed in as a registered user.</p>
 

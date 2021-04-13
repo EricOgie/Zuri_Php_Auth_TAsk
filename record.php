@@ -25,15 +25,17 @@ if(isset($_POST['submit'])){
 
 function redirectToSuccess($fileName, $userData){
     $redirectHome = "Location: home.php";
-    $signIn = "signin.html";
+    $signIn = "index.html";
 
     if(file_exists($fileName)){
         
-        echo"<h1>Oops :)</h1><br>";
-            echo("You have Been registered Prior<br>");
-            echo("<p>Would you like to signIn instead?</p> <br>");
-            echo"<a href='$signIn'>Sign-In</a>";
+        echo"<h1>Oops :)</h1><br>
+        You have Been registered Prior<br>
+        <p>Would you like to signIn instead?</p> <br>
+        <a href='$signIn'>Sign-In</a>" ;
+            
     }else{
+        
         file_put_contents($fileName, json_encode($userData));
         header($redirectHome);
     }

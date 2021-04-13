@@ -4,7 +4,7 @@
 
            if(isset($_POST['submit'])){
 
-            $signIn = "signin.html";
+            $signIn = "index.html";
 
             echo("<h1>You Logged Out!</h1><br>");
             echo("Hope you had a nice time<br><br>");

@@ -6,16 +6,19 @@ if(isset($_POST['submit'])){
     
 
     $jsonXtension = ".json";
-    $fsDir = "files/";
+    $fsDir = "userDir/";
 
     $userObject = null;
+    $users_array = null;
 
     $userEmail = $_POST['email'];
     $password = $_POST['pword'];
 
     
-    $userFile = "files/".$userEmail.$jsonXtension;
-    $users_array = file($userFile);
+    $userFile = $fsDir.$userEmail.$jsonXtension;
+
+    if(file_exists($userFile)){
+        $users_array = file($userFile);
 
     /*
     * Because $userFile is unique, this returns a unit array if file dir is not empty
@@ -24,22 +27,28 @@ if(isset($_POST['submit'])){
     */
 
     foreach ($users_array as $value) {
-        $userObject = json_decode($value); 
+        $userObject = json_decode($value);
         
     }
-    
-    if(is_null($userObject)){  // $userObject could be null if file dir is empty
+
+        if(is_null($userObject)){  // $userObject could be null if file dir is empty
         showErrorMsg();
 
-    }else {
+        }else {
 
         if($userObject->email === $userEmail && $userObject->password === $password){
             header($redirectHome);
-        }else{
+         }else{
             showErrorMsg();
-        }
-    }  
+         }
+        }  
 
+    }else {
+        showErrorMsg();
+
+    }
+
+   
 }
 
 function showErrorMsg(){

@@ -3,7 +3,7 @@
 if(isset($_POST['submit'])){
 
     $jsonXtension = ".json";
-    $fsDir = "files/";
+    $fsDir = "userDir/";
     $oldUserObject = null;
     $signIn = "signin.html";
     
@@ -42,6 +42,6 @@ if(isset($_POST['submit'])){
     }
 
 
-}
+ }
 
 ?>

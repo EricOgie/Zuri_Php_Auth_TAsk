@@ -3,7 +3,9 @@
 if(isset($_POST['submit'])){
 
     $jsonXtension = ".json";
-    $fsDir = "files/";
+    $fsDir = "userDir/";
+    $redirectHome = "Location: home.php";
+    $signIn = "index.html";
     
 
     $firstName = $_POST['firstName'];
@@ -19,13 +21,7 @@ if(isset($_POST['submit'])){
     ];
 
     $fileName = $fsDir.$userEmail.$jsonXtension;
-    redirectToSuccess($fileName, $userData);
-
-}
-
-function redirectToSuccess($fileName, $userData){
-    $redirectHome = "Location: home.php";
-    $signIn = "index.html";
+    $userEncoded = json_encode($userData);
 
     if(file_exists($fileName)){
         
@@ -33,13 +29,15 @@ function redirectToSuccess($fileName, $userData){
         You have Been registered Prior<br>
         <p>Would you like to signIn instead?</p> <br>
         <a href='$signIn'>Sign-In</a>" ;
-            
-    }else{
-        
-        file_put_contents($fileName, json_encode($userData));
+
+    }else {
+
+        file_put_contents($fileName, $userEncoded);
         header($redirectHome);
     }
 
+
 }
+
 
 ?>

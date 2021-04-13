@@ -39,6 +39,7 @@ if(isset($_POST['submit'])){
             showErrorMsg();
         }
     }  
+
 }
 
 function showErrorMsg(){
